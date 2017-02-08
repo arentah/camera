@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     Button cameraIntentButton;
 
     static final int PERMISSION_REQUEST_CODE = 100;
-    boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkPermission() {
 
-        // Here, thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
+        if(ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED){
+            startCamera();
+        }
+
+        else if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
 
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                     Manifest.permission.CAMERA)) {
+                    //idk what this is for lol
 
-
-            } else {
+            }
+        }else {
 
                 // No explanation needed, we can request the permission.
 
@@ -61,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        }
-
     }
 
 
