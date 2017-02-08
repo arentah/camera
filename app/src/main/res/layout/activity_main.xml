@@ -27,5 +27,5 @@
         android:layout_gravity="center"
         android:id="@+id/button_view"
         android:text="begin"
-        android:onClick="camera"/>
+        android:onClick="cameraPerm"/>
 </LinearLayout>
